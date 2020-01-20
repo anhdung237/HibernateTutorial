@@ -8,8 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -74,4 +78,41 @@ public class Employee {
 		this.empName = empName;
 	}
 	
+	@Column(name = "JOB", length = 30, nullable = false)
+	public String getJob(){
+		return job;
+	}
+	
+	public void setJob(String job){
+		this.job = job;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MNG_ID")
+	public Employee getManager(){
+		return manager;
+	}
+	
+	public void setManager(Employee manager) {
+		this.manager = manager;
+	}
+	
+	@Column(name = "HIRE_DATE", nullable = false)
+	@Temporal(TemporalType.DATE)
+	public Date getHideDate(){
+		return hideDate;
+	}
+	
+	public void setHideDate(Date hideDate) {
+		this.hideDate = hideDate;
+	}
+	
+	@Column(name = "SALARY", nullable = false)
+	public Float getSalary(){
+		return salary;
+	}
+	
+	public void setSalary(Float salary){
+		this.salary = salary;
+	}
 }
