@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,7 +30,6 @@ public class Employee {
 	private Date hideDate;
 	private Float salary;
 	private byte[] image;
-	
 	private Department department;
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	
@@ -115,4 +115,35 @@ public class Employee {
 	public void setSalary(Float salary){
 		this.salary = salary;
 	}
+	
+	@Column(name="IMAGE", length=1111111, nullable=true)
+	@Lob
+	public byte[] getImage(){
+		return image;
+	}
+	
+	public void setImage(byte[] image){
+		this.image = image;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DEPT_ID", nullable = false)
+	public Department getDepartment(){
+		return department;
+	}
+	
+	public void setDepartment(Department department){
+		this.department = department;
+	}
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "empId")
+	public Set<Employee> getEmployees(){
+		return employees;
+	}
+	
+	public void setEmployees(Set<Employee> employees){
+		this.employees = employees;
+	}
+	
+	
 }
