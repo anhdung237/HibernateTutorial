@@ -32,11 +32,11 @@
 
 		<!-- MySQL JDBC driver -->
 		<!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.34</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- SQLServer JDBC driver (JTDS) -->
 		<!-- http://mvnrepository.com/artifact/net.sourceforge.jtds/jtds -->
